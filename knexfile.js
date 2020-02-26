@@ -1,31 +1,28 @@
-const dbConnection = process.env.DATABASE_URL
+const dbConnection = process.env.DATABASE_URL;
 
 module.exports = {
+  development: {
+    client: "sqlite3",
+    connection: {
+      filename: "./database/development.db3"
+    },
+    useNullAsDefault: true,
+    migrations: {
+      directory: "./database/migrations"
+    },
+    seeds: {
+      directory: "./database/seeds"
+    }
+  },
 
-    development: {
-        client: 'sqlite3',
-        connection: {
-          filename: './data/development.db3',
-        },
-        useNullAsDefault: true,
-        migrations: {
-          directory: './data/migrations',
-        },
-        seeds: {
-          directory: './data/seeds',
-        },
-      },
-
-      production: {
-        client: 'pg',
-        connection: dbConnection,
-        migrations: {
-          directory: './data/migrations',
-        },
-        seeds: {
-          directory: './data/seeds',
-        },
-      }
-
-}
-
+  production: {
+    client: "pg",
+    connection: dbConnection,
+    migrations: {
+      directory: "./database/migrations"
+    },
+    seeds: {
+      directory: "./database/seeds"
+    }
+  }
+};
