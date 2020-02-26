@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcryptjs");
 
-const { genToken } = require("../middleware/gentoken.js");
+const { genToken } = require("../middleware/genToken.js");
 const {
   findBy,
   insert,
