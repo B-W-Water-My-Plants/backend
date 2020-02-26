@@ -9,11 +9,11 @@ const {
 } = require("../models/users-model")
 
 router.post("/register", (req, res) => {
-  const user = req.body;
+  let user = req.body;
   if (user.username && user.password) {
     const hash = bcrypt.hashSync(user.password, 14);
     user.password = hash;
-    insert(req.body)
+    insert(user)
       .then(user => {
         res
           .status(200)
