@@ -1,0 +1,33 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Backend for Water My Plants - Buildweek",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "server": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/B-W-Water-My-Plants/backend.git"
+  },
+  "author": "Danica Valdez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/B-W-Water-My-Plants/backend/issues"
+  },
+  "homepage": "https://github.com/B-W-Water-My-Plants/backend#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "knex": "^0.20.10",
+    "pg": "^7.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2",
+    "sqlite3": "^4.1.1"
+  }
+}
