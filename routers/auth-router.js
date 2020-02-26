@@ -8,7 +8,7 @@ const {
   insert,
 } = require("../models/users-model")
 
-router.post("/register", (req, res, next) => {
+router.post("/register", (req, res) => {
   const user = req.body;
   if (user.username && user.password) {
     const hash = bcrypt.hashSync(user.password, 14);
@@ -19,15 +19,15 @@ router.post("/register", (req, res, next) => {
           .status(200)
           .json({ message: "User registration successful." });
       })
-      .catch(err => {
-        next(err);
+      .catch(() => {
+        res.status(500).json({ message: "Error retrieving information."})
       });
   } else {
     res.status(400).json({ message: "Invalid credentials" });
   }
 });
 
-router.post("/login", (req, res, next) => {
+router.post("/login", (req, res) => {
   let { username, password } = req.body;
 
   if (username && password) {
