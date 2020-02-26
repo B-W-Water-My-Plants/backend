@@ -1,6 +1,6 @@
 const express = require('express');
 
-const authRouter = require("../routers/auth-router");
+const authRouter = require("../routers/auth-router.js");
 
 const server = express();
 
