@@ -16,7 +16,7 @@ router.post("/register", (req, res) => {
     insert(user)
       .then(user => {
         console.log(user)
-        res.status(200).json({ message: "User registration successful." });
+        res.status(200).json({ message: "User registration successful.", id: user.id, username: user.username });
       })
       .catch(err => res.status(500).json({ message: "Error", error: err }))
   } else {
