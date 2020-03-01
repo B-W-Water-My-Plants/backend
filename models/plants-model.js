@@ -10,17 +10,17 @@ function findById(id) {
     .first();
 };
 
-async function insert(newPlant) {
-  const [id] = await db("plants").insert(newPlant, "id").returning('id');
-}
+// async function insert(newPlant) {
+//   const [id] = await db("plants").insert(newPlant, "id").returning("id");
+// }
 
-// function insert(newPlant) {
-//   return db("plants")
-//     .insert(newPlant, "id")
-//     .then(id => {
-//       return findById(id[0]);
-//     });
-// };
+function insert(newPlant) {
+  return db("plants")
+    .insert(newPlant, "id")
+    .then(id => {
+      return findById(id[0]);
+    });
+};
 
 function update(id, updates){
   return db("plants")
