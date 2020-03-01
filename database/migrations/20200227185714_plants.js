@@ -6,7 +6,7 @@ exports.up = function(knex) {
       .unique()
       .notNullable();
     plants.string("species", 255).notNullable();
-    plants.string("h2o_frequency", "255").notNullable();
+    plants.string("h2o_frequency", 255).notNullable();
     plants.string("image", 255)
     plants
       .integer("user_id")
