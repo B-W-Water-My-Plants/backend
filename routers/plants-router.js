@@ -5,6 +5,7 @@ const UserDb = require('../models/users-model.js')
 
 router.post('/:id/plants', validateUserId, (req, res) => {
   Plants.insert({ user_id: req.params.id, ...req.body })
+    .first()
     .then((newPlant) => {
       res.status(201).json(newPlant)
     })
