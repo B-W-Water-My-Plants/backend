@@ -27,19 +27,17 @@ function findById(id) {
 }
 
 
-// async function insert(user) {
-//   // const [id] = await db("users").insert(user).returning('id');
-//   // const [id] = await db("users").insert(user);
-//   // return findById(id);
-// }
-
-function insert(project) {
-  return db("users")
-      .insert(user)
-      .then((ids) => {
-        return findById(ids[0]);
-      })
+async function insert(user) {
+  const [id] = await db("users").insert(user).returning('id');
 }
+
+// function insert(project) {
+//   return db("users")
+//       .insert(user)
+//       .then((ids) => {
+//         return findById(ids[0]);
+//       })
+// }
 
 function update(id, changes) {
   return db("users")
