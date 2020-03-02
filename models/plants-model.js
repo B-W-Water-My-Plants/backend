@@ -12,7 +12,7 @@ function findById(id) {
 
 function insert(newPlant) {
   return db("plants")
-    .insert(newPlant, "id")
+    .insert(newPlant)
     .then(id => {
       return findById(id[0]);
     });

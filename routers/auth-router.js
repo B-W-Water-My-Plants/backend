@@ -4,9 +4,15 @@ const bcrypt = require("bcryptjs");
 
 const { genToken } = require("../middleware/genToken.js");
 const {
+  find,
   findBy,
   insert,
 } = require("../models/users-model")
+
+router.get("/users", (req, res) => {
+  find()
+  .then(users => { res.json(users) })
+})
 
 router.post("/register", (req, res) => {
   let user = req.body;

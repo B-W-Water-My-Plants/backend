@@ -3,7 +3,6 @@ exports.up = function(knex) {
     plants.increments();
     plants
       .string("nickname", 255)
-      .unique()
       .notNullable();
     plants.string("species", 255).notNullable();
     plants.string("h2o_frequency", 255).notNullable();
