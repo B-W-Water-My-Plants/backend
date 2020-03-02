@@ -26,18 +26,13 @@ function findById(id) {
     .first();
 }
 
-
-async function insert(user) {
-  const [id] = await db("users").insert(user).returning('id');
-}
-
-// function insert(project) {
-//   return db("users")
-//       .insert(user)
-//       .then((ids) => {
-//         return findById(ids[0]);
-//       })
-// }
+function insert(newUser) {
+  return db("users")
+    .insert(newUser, "id")
+    .then(id => {
+      return findById(id[0]); 
+    });
+};
 
 function update(id, changes) {
   return db("users")
