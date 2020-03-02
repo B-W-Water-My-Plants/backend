@@ -1,7 +1,8 @@
 const express = require("express");
 const router = express.Router();
+
 const Plants = require("../models/plants-model.js");
-const UserDb = require('../models/users-model.js')
+const validateUserId = require("../middleware/validate-user")
 
 router.post('/:id/plants', validateUserId, (req, res) => {
   Plants.insert({ user_id: req.params.id, ...req.body })
@@ -23,7 +24,7 @@ router.get("/:id/plants", validateUserId, (req, res, next) => {
     });
 });
 
-router.get(":id/plants/:plantId", validateUserId, (req, res, next) => {
+router.get("/id/plants/:plantId", validateUserId, (req, res, next) => {
   Plants.findById(req.params.plantId)
     .then(plant => {
       res.status(200).json(plant);
@@ -31,42 +32,27 @@ router.get(":id/plants/:plantId", validateUserId, (req, res, next) => {
     .catch(err => {
       next(err);
     });
-  })
+  });
 
-// router.put("/:id", (req, res, next) => {
-//   Plants.update(req.params.id, req.body) 
-//     .then(updated => {
-//       res.status(200).json(updated);
-//     })
-//     .catch(err => {
-//       next(err);
-//     });
-// });
-
-// router.delete("/:id", (req, res, next) => {
-//   Plants.remove(req.params.id)
-//     .then(removed => {
-//       res.status(200).json(removed);
-//     })
-//     .catch(err => {
-//       next(err);
-//     });
-// });
-
-function validateUserId(req, res, next) {
-  const { id } = req.params
-
-  UserDb.findById(id)
-    .then((user) => {
-      if (user) {
-      next()
-      } else {
-        res.status(404).json({ message: "invalid user id" })
-      }
+router.put("/:id/plants/:plantId", validateUserId, (req, res, next) => {
+  Plants.update(req.params.plantId, req.body) 
+    .then(updated => {
+      console.log(updated)
+      res.status(200).json(updated);
     })
-    .catch(() => {
-      res.status(500).json({ error: "The project information could not be retrieved." })
-  })
-}
+    .catch(err => {
+      next(err);
+    });
+});
+
+router.delete("/:id/plants/:plantId", validateUserId, (req, res, next) => {
+  Plants.remove(req.params.plantId)
+    .then(removed => {
+      res.status(200).json({ message: "Plant has been deleted successfully." });
+    })
+    .catch(err => {
+      next(err);
+    });
+});
 
 module.exports = router;
