@@ -4,7 +4,8 @@ const router = express.Router();
 const Plants = require("../models/plants-model.js");
 const validateUserId = require("../middleware/validate-user")
 
-router.post('/:id/plants', validateUserId, (req, res) => {
+router.post("/:id/plants", validateUserId, (req, res) => {
+  console.log(req.params.id)
   Plants.insert({ user_id: req.params.id, ...req.body })
     .then((newPlant) => {
       res.status(201).json(newPlant)
@@ -24,7 +25,7 @@ router.get("/:id/plants", validateUserId, (req, res, next) => {
     });
 });
 
-router.get("/id/plants/:plantId", validateUserId, (req, res, next) => {
+router.get("/:id/plants/:plantId", validateUserId, (req, res, next) => {
   Plants.findById(req.params.plantId)
     .then(plant => {
       res.status(200).json(plant);
