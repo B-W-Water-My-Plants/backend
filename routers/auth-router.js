@@ -9,11 +9,6 @@ const {
   insert,
 } = require("../models/users-model")
 
-router.get("/users", (req, res) => {
-  find()
-  .then(users => { res.json(users) })
-})
-
 router.post("/register", (req, res) => {
   let user = req.body;
   if (user.username && user.password) {
