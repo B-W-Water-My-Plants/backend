@@ -18,19 +18,23 @@ function insert(newPlant) {
     });
 };
 
-// async function update(id, changes) {
-//   await db("plants")
-//     .where({ id })
-//     .first()
-//     .update(changes);
-//   return findById(id);
-// }
-
-const update = (id, updates) => {
-  return db("plants")
+async function update(id, changes) {
+  await db("plants")
     .where({ id })
-    .update(updates);
-};
+    .first()
+    .update(changes);
+  return findById(id);
+}
+
+// const update = (id, updates) => {
+//   return db("plants")
+//     .where({ id })
+//     .update(updates)
+//     .then(id => {
+//       console.log(id)
+//       return findById(id);
+//     });
+// };
 
 function remove(id) {
   return db("plants")
