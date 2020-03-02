@@ -10,10 +10,6 @@ function findById(id) {
     .first();
 };
 
-// async function insert(newPlant) {
-//   const [id] = await db("plants").insert(newPlant, "id").returning("id");
-// }
-
 function insert(newPlant) {
   return db("plants")
     .insert(newPlant, "id")
@@ -22,7 +18,15 @@ function insert(newPlant) {
     });
 };
 
-function update(id, updates){
+// async function update(id, changes) {
+//   await db("plants")
+//     .where({ id })
+//     .first()
+//     .update(changes);
+//   return findById(id);
+// }
+
+const update = (id, updates) => {
   return db("plants")
     .where({ id })
     .update(updates);
