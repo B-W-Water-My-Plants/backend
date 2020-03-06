@@ -4,7 +4,6 @@ const bcrypt = require("bcryptjs");
 
 const { genToken } = require("../middleware/genToken.js");
 const {
-  find,
   findBy,
   insert,
 } = require("../models/users-model")

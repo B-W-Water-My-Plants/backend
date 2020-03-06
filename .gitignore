@@ -5,6 +5,5 @@
 /config
 
 # Databases
-*.db3
-*.db
+/database
 
