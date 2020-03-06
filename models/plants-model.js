@@ -26,16 +26,6 @@ async function update(id, changes) {
   return findById(id);
 }
 
-// const update = (id, updates) => {
-//   return db("plants")
-//     .where({ id })
-//     .update(updates)
-//     .then(id => {
-//       console.log(id)
-//       return findById(id);
-//     });
-// };
-
 function remove(id) {
   return db("plants")
     .where("id", id)
